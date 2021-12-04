@@ -1,0 +1,20 @@
+.inputContainer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+input {
+  margin-right: 1rem;
+  padding: 0.25rem;
+  background-color: var(--marron);
+  color: white;
+  font-size: 1.1rem;
+}
+input::placeholder {
+  color: var(--crema);
+}
+button {
+  background-color: var(--marron-crema);
+  font-weight: bold;
+  font-size: 1.1rem;
+}
