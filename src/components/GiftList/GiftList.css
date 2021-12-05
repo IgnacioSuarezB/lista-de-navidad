@@ -1,3 +1,13 @@
 li {
   list-style-type: circle;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 0.25rem;
+}
+.delete {
+  background-color: var(--rojo);
+  text-align: right;
+  border-radius: 0.5rem;
+  padding: 0.4rem;
 }

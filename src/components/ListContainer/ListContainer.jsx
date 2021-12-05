@@ -10,9 +10,11 @@ const listGifts = [
 
 const ListContainer = () => {
   const [gifts, setGifts] = useState(listGifts);
+  const [idHash, setIdHash] = useState(gifts.length + 1);
   console.log(gifts);
   const addGift = (newGift) => {
-    let newid = gifts.length + 1;
+    let newid = idHash;
+    setIdHash(newid + 1);
     setGifts([
       ...gifts,
       {
@@ -22,10 +24,14 @@ const ListContainer = () => {
     ]);
     console.log(gifts);
   };
+  const removeGifts = (id) => {
+    const newListGift = gifts.filter((gift) => gift.id !== id);
+    setGifts(newListGift);
+  };
   return (
     <div className="container">
       <h1>Lista de Navidad 🎁</h1>
-      <GiftList listGifts={gifts} />
+      <GiftList listGifts={gifts} removeGifts={removeGifts} />
       <GiftInput addGift={addGift} />
     </div>
   );
