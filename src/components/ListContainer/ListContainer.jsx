@@ -35,7 +35,11 @@ const ListContainer = () => {
     <div className="container">
       <h1>Lista de Navidad 🎁</h1>
       <GiftInput addGift={addGift} />
-      <GiftList listGifts={gifts} removeGifts={removeGifts} />
+      {gifts.length === 0 ? (
+        <p>No hay regalos, solo carbón</p>
+      ) : (
+        <GiftList listGifts={gifts} removeGifts={removeGifts} />
+      )}
       <button
         onClick={() => {
           handleDeleteAll();

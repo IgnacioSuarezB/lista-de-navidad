@@ -1,6 +1,7 @@
 li {
   list-style-type: circle;
   padding-bottom: 0.25rem;
+  font-size: 2rem;
 }
 .divLi {
   display: flex;
