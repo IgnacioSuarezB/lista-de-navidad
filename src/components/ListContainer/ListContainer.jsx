@@ -28,11 +28,22 @@ const ListContainer = () => {
     const newListGift = gifts.filter((gift) => gift.id !== id);
     setGifts(newListGift);
   };
+  const handleDeleteAll = () => {
+    setGifts([]);
+  };
   return (
     <div className="container">
       <h1>Lista de Navidad 🎁</h1>
-      <GiftList listGifts={gifts} removeGifts={removeGifts} />
       <GiftInput addGift={addGift} />
+      <GiftList listGifts={gifts} removeGifts={removeGifts} />
+      <button
+        onClick={() => {
+          handleDeleteAll();
+        }}
+        id="btnDelete"
+      >
+        Eliminar todos los regalos
+      </button>
     </div>
   );
 };
