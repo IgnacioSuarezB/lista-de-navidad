@@ -16,6 +16,7 @@ const GiftInput = ({ addGift }) => {
         onChange={(e) => {
           setInput(e.target.value);
         }}
+        required
       />
       <button type="submit">Agregar</button>
     </form>

@@ -13,6 +13,13 @@ const ListContainer = () => {
   const [idHash, setIdHash] = useState(gifts.length + 1);
   console.log(gifts);
   const addGift = (newGift) => {
+    console.log(gifts.find((element) => element.title === newGift));
+    if (
+      gifts.some(
+        (element) => element.title.toUpperCase() === newGift.toUpperCase()
+      )
+    )
+      return;
     let newid = idHash;
     setIdHash(newid + 1);
     setGifts([
