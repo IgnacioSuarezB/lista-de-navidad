@@ -2,19 +2,29 @@ import { useState } from "react";
 import "./GiftInput.css";
 
 const GiftInput = ({ addGift }) => {
-  const [input, setInput] = useState("");
+  const [giftName, setGiftName] = useState("");
+  const [amount, setAmount] = useState(0);
   const handleSubmit = (e) => {
     e.preventDefault();
-    addGift(input);
+    addGift(giftName, amount);
   };
   return (
     <form className="inputContainer" onSubmit={handleSubmit}>
       <input
         type="text"
-        placeholder="Ingrese el nuevo regalo"
-        value={input}
+        placeholder="Ingrese un nuevo regalo"
+        value={giftName}
         onChange={(e) => {
-          setInput(e.target.value);
+          setGiftName(e.target.value);
+        }}
+        required
+      />
+      <span>X</span>
+      <input
+        type="number"
+        className="input-number"
+        onChange={(e) => {
+          setAmount(parseInt(e.target.value));
         }}
         required
       />

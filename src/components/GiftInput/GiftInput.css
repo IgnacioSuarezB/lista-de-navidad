@@ -1,6 +1,8 @@
 .inputContainer {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
   margin-bottom: 1rem;
 }
 input {
@@ -12,6 +14,10 @@ input {
 }
 input::placeholder {
   color: var(--crema);
+}
+.input-number {
+  width: 50px;
+  margin-left: 1rem;
 }
 button {
   background-color: var(--marron-crema);

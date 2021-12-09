@@ -3,23 +3,30 @@ import GiftInput from "../GiftInput/GiftInput";
 import GiftList from "../GiftList/GiftList";
 import "./ListContainer.css";
 const listGifts = [
-  { id: 1, title: "Reloj Nono" },
-  { id: 2, title: "Remera Vicky" },
-  { id: 3, title: "Manga Nacho" },
+  { id: 1, title: "Reloj Nono", amount: 1 },
+  { id: 2, title: "Remera Vicky", amount: 1 },
+  { id: 3, title: "Manga Nacho", amount: 1 },
 ];
 
 const ListContainer = () => {
   const [gifts, setGifts] = useState(listGifts);
   const [idHash, setIdHash] = useState(gifts.length + 1);
   console.log(gifts);
-  const addGift = (newGift) => {
-    console.log(gifts.find((element) => element.title === newGift));
+
+  const addGift = (newGift, amount) => {
     if (
       gifts.some(
         (element) => element.title.toUpperCase() === newGift.toUpperCase()
       )
-    )
+    ) {
+      let giftsRefesh = [...gifts];
+      let indexGift = gifts.findIndex(
+        (element) => element.title.toUpperCase() === newGift.toUpperCase()
+      );
+      giftsRefesh[indexGift].amount += amount;
+      setGifts(giftsRefesh);
       return;
+    }
     let newid = idHash;
     setIdHash(newid + 1);
     setGifts([
@@ -27,6 +34,7 @@ const ListContainer = () => {
       {
         id: newid,
         title: newGift,
+        amount: amount,
       },
     ]);
     console.log(gifts);

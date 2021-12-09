@@ -5,7 +5,9 @@ const GiftList = ({ listGifts, removeGifts }) => {
       {listGifts.map((gift) => (
         <li key={gift.id}>
           <div className="divLi">
-            <span>{gift.title}</span>
+            <span>
+              {gift.title} x {gift.amount}
+            </span>
             <button className="delete" onClick={() => removeGifts(gift.id)}>
               X
             </button>
