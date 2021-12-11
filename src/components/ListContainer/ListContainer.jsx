@@ -1,17 +1,28 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import GiftInput from "../GiftInput/GiftInput";
 import GiftList from "../GiftList/GiftList";
 import "./ListContainer.css";
-const listGifts = [
-  { id: 1, title: "Reloj Nono", amount: 1 },
-  { id: 2, title: "Remera Vicky", amount: 1 },
-  { id: 3, title: "Manga Nacho", amount: 1 },
-];
+// const listGifts = [
+//   { id: 1, title: "Reloj Nono", amount: 1 },
+//   { id: 2, title: "Remera Vicky", amount: 1 },
+//   { id: 3, title: "Manga Nacho", amount: 1 },
+// ];
 
 const ListContainer = () => {
-  const [gifts, setGifts] = useState(listGifts);
+  const [gifts, setGifts] = useState([]);
   const [idHash, setIdHash] = useState(gifts.length + 1);
-  console.log(gifts);
+
+  useEffect(() => {
+    if (localStorage.getItem("localList")) {
+      setGifts(JSON.parse(localStorage.getItem("localList")));
+      setIdHash(parseInt(localStorage.getItem("localId")));
+    }
+  }, []);
+  useEffect(() => {
+    const localList = JSON.stringify(gifts);
+    localStorage.setItem("localList", localList);
+    localStorage.setItem("localId", idHash);
+  }, [gifts]);
 
   const addGift = (newGift, amount) => {
     if (
@@ -37,14 +48,15 @@ const ListContainer = () => {
         amount: amount,
       },
     ]);
-    console.log(gifts);
   };
+
   const removeGifts = (id) => {
     const newListGift = gifts.filter((gift) => gift.id !== id);
     setGifts(newListGift);
   };
   const handleDeleteAll = () => {
     setGifts([]);
+    setIdHash(1);
   };
   return (
     <div className="container">
