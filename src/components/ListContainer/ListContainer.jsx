@@ -24,7 +24,7 @@ const ListContainer = () => {
     localStorage.setItem("localId", idHash);
   }, [gifts]);
 
-  const addGift = (newGift, amount) => {
+  const addGift = (newGift, amount, giftUrl) => {
     if (
       gifts.some(
         (element) => element.title.toUpperCase() === newGift.toUpperCase()
@@ -35,6 +35,7 @@ const ListContainer = () => {
         (element) => element.title.toUpperCase() === newGift.toUpperCase()
       );
       giftsRefesh[indexGift].amount += amount;
+      if (giftUrl !== "") giftsRefesh[indexGift].url = giftUrl;
       setGifts(giftsRefesh);
       return;
     }
@@ -46,6 +47,7 @@ const ListContainer = () => {
         id: newid,
         title: newGift,
         amount: amount,
+        url: giftUrl,
       },
     ]);
   };

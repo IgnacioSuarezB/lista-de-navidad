@@ -8,10 +8,12 @@ const GiftList = ({ listGifts, removeGifts }) => {
             <span>
               {gift.title} x {gift.amount}
             </span>
+
             <button className="delete" onClick={() => removeGifts(gift.id)}>
               X
             </button>
           </div>
+          <img src={gift.url} />
         </li>
       ))}
     </ul>

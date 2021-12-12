@@ -4,9 +4,10 @@ import "./GiftInput.css";
 const GiftInput = ({ addGift }) => {
   const [giftName, setGiftName] = useState("");
   const [amount, setAmount] = useState(0);
+  const [giftUrl, setGiftUrl] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
-    addGift(giftName, amount);
+    addGift(giftName, amount, giftUrl);
   };
   return (
     <form className="inputContainer" onSubmit={handleSubmit}>
@@ -27,6 +28,14 @@ const GiftInput = ({ addGift }) => {
           setAmount(parseInt(e.target.value));
         }}
         required
+      />
+      <input
+        type="text"
+        placeholder="Url"
+        value={giftUrl}
+        onChange={(e) => {
+          setGiftUrl(e.target.value);
+        }}
       />
       <button type="submit">Agregar</button>
     </form>
